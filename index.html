@@ -94,7 +94,7 @@
 
                                 <div class="form-check">
 
-                                    <input type="checkbox" class="form-check-input" value="alface" v-model="">
+                                    <input type="checkbox" class="form-check-input" value="alface" v-model="inputSalada">
 
                                     <label class="form-check-label"> Alface </label>
 
@@ -106,6 +106,33 @@
                             </div>
                         </div>
                      </div>
+                     <!-- Fim Salada -->
+
+                     <!-- Molhos -->
+                      <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    Molhos
+                                </div>
+
+                                <div class="card-body">
+
+                                </div>
+
+                                <div class="form-check">
+
+                                    <input type="checkbox" class="form-check-input" value="" v-model="inputSalada">
+
+                                    <label class="form-check-label">  </label>
+
+
+                            </div>
+
+                        </div>
+
+                      </div>
                      
                                                       
                     
@@ -124,7 +151,8 @@
             el: '#app',
 
             data: {  // atributos // propriedades
-                inputTipoPao: '',
+                inputTipoPao: '', /* radio = Obrigatorio */
+                inputSalada: [], /* checkbox = opcional */
 
                 etapa: 1,
                 
@@ -142,6 +170,14 @@
                             return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
                     }
 
+                },
+
+                alface () {
+                    if (this.inputSalada.includes('alface')) {
+                        return 'imagens/alface.png'
+                    }
+
+                    return 'imagens/padrao/alface.png'
                 },
                 
             },
