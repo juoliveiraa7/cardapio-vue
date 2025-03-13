@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Oliveira Burger  </title>
+    <title> Oliveira Burger </title>
 
     <!-- VUE -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -61,7 +61,8 @@
                                 <div class="card-body">
 
                                     <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input"  value="gergelim" v-model="inputTipoPao">
+                                        <input type="radio" class="form-check-input" value="gergelim"
+                                            v-model="inputTipoPao">
 
                                         <label class="form-check-label">Gergelim</label>
                                     </div>
@@ -80,7 +81,7 @@
                     <!-- FIM TIPO do Pão -->
 
                     <!-- SALADA -->
-                     <div class="row mt-2">
+                    <div class="row mt-2">
                         <div class="col">
                             <div class="card">
 
@@ -90,27 +91,28 @@
 
                                 <div class="card-body">
 
+                                    <div class="form-check">
+
+                                        <input type="checkbox" class="form-check-input" value="alface"
+                                            v-model="inputSalada">
+
+                                        <label class="form-check-label"> Alface </label>
+
+                                    </div>
+
                                 </div>
-
-                                <div class="form-check">
-
-                                    <input type="checkbox" class="form-check-input" value="alface" v-model="inputSalada">
-
-                                    <label class="form-check-label"> Alface </label>
-
-                                </div>
-
-                                
-                                </div> 
 
                             </div>
-                        </div>
-                     </div>
-                     <!-- Fim Salada -->
 
-                     <!-- Molhos -->
-                      <div class="row mt-2">
+                        </div>
+                    </div>
+
+                    <!-- Fim Salada -->
+
+                    <!-- Molhos -->
+                    <div class="row mt-2">
                         <div class="col">
+
                             <div class="card">
 
                                 <div class="card-header">
@@ -119,27 +121,57 @@
 
                                 <div class="card-body">
 
+
+
+                                    <div class="form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="ketchup"
+                                            v-model="inputMolhos">
+                                        <label class="form-check-label"> Ketchup </label>
+                                    </div>
+
+
+                                    <div class="form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="mostarda"
+                                            v-model="inputMolhos">
+                                        <label class="form-check-label"> Mostarda </label>
+
+                                    </div>
+
+                                    <div class="form-check-inline">
+
+                                        <input type="checkbox" class="form-check-input" value="maionese"
+                                            v-model="inputMolhos">
+                                        <label class="form-check-label"> Maionese </label>
+                                    </div>
+
                                 </div>
-
-                                <div class="form-check">
-
-                                    <input type="checkbox" class="form-check-input" value="" v-model="inputSalada">
-
-                                    <label class="form-check-label">  </label>
-
+                                <!-- fim card body -->
 
                             </div>
 
                         </div>
+                    </div> 
+                    <!-- Fim Molhos -->
 
-                      </div>
-                     
-                                                      
-                    
-                    
-                </div> <!-- Fim col md -->
 
-                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <!-- Fim etapa 1 -->
+
 
             </div> <!-- fim ROW -->
         </div> <!-- FIM APP -->
@@ -153,9 +185,9 @@
             data: {  // atributos // propriedades
                 inputTipoPao: '', /* radio = Obrigatorio */
                 inputSalada: [], /* checkbox = opcional */
-
+                inputMolhos: [],
                 etapa: 1,
-                
+
 
             },
 
@@ -172,17 +204,46 @@
 
                 },
 
-                alface () {
+                alface() {
                     if (this.inputSalada.includes('alface')) {
                         return 'imagens/alface.png'
                     }
 
                     return 'imagens/padrao/alface.png'
                 },
+
+                ketchup() {
+
+                    if(this.inputMolhos.includes('ketchup')) {
+                        return 'imagens/ketchup.png'
+                    }
+
+                    return 'imagens/padrao/molho.png'
+                },
+
+                mostarda() {
+
+                    if(this.inputMolhos.includes('mostarda')) {
+                        return 'imagens/mostarda.png'
+                    }
+
+                    return 'imagens/padrao/molho.png'
+                },
+
+                maionese() {
+
+                    if(this.inputMolhos.includes('maionese')) {
+                        return 'imagens/maionese.png'
+                    }
+
+                    return 'imagens/padrao/molho.png'
+                },
                 
+
+
             },
-            
-            
+
+
         })
     </script>
 
