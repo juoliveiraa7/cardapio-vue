@@ -204,13 +204,23 @@
                         
                         <div class="col d-flex justify-content-end">
 
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="button" @click="fazerPedido()">
                                 Fazer o Pedido
                             </button>
                         </div>
 
                 </div> <!-- Fim etapa 1 -->
                 <!-- Fim col md -->
+
+                <div class="col-md-6" v-if="etapa == 2">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <div class="card">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div> <!-- fim ROW -->
@@ -299,6 +309,21 @@
 
 
             },
+
+           methods:{
+               fazerPedido() {
+                   //se Pão e Carne forem selecionados
+                   if(this.inputTipoPao && this.inputBurger)  {
+                      this.etapa = 2
+                      // avança para etapa 2
+                   }
+                      else {
+                        alert('Você precisa selecionar o minimo um pão e carne')
+                      }
+
+             }
+
+           },
 
 
         })
