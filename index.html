@@ -152,11 +152,11 @@
                             </div>
 
                         </div>
-                    </div> 
+                    </div>
                     <!-- Fim Molhos -->
 
                     <!-- Tipos Hamburger -->
-                     <div class="row mt-2">
+                    <div class="row mt-2">
                         <div class="col">
                             <div class="card">
 
@@ -166,48 +166,52 @@
                                 <div class="card-body">
 
                                     <!-- Bovino -->
-                                     <div class="form-check form-check-inline">
+                                    <div class="form-check form-check-inline">
 
-                                        <input type="radio" value="bovino" v-model="inputBurger">
+                                        <input type="radio" value="bovino" v-model="inputBurger"
+                                            class="form-check-input">
 
                                         <label class="form-check-label"> Bovina </label>
 
-                                     </div>
+                                    </div>
 
-                                     <!-- Frango -->
-                                     <div class="form-check form-check-inline">
+                                    <!-- Frango -->
+                                    <div class="form-check form-check-inline">
 
-                                        <input type="radio" value="frango" v-model="inputBurger">
+                                        <input type="radio" value="frango" v-model="inputBurger"
+                                            class="form-check-input">
 
                                         <label class="form-check-label"> Frango </label>
 
-                                        
-                                     </div>
 
-                                     <!-- Vegetal -->
-                                     <div class="form-check form-check-inline">
+                                    </div>
 
-                                        <input type="radio" value="vegetal" v-model="inputBurger">
+                                    <!-- Vegetal -->
+                                    <div class="form-check form-check-inline">
+
+                                        <input type="radio" value="vegetal" v-model="inputBurger"
+                                            class="form-check-input">
 
                                         <label class="form-check-label"> Vegetal </label>
 
-                                        
-                                     </div>
+
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
-                     </div> <!-- Fim Burger-->
+                    </div> <!-- Fim Burger-->
 
-                     <!-- Fazer o Pedido -->
-                      <div class="row mt-2">
-                        
+                    <!-- Fazer o Pedido -->
+                    <div class="row mt-2">
+
                         <div class="col d-flex justify-content-end">
 
                             <button class="btn btn-primary" type="button" @click="fazerPedido()">
                                 Fazer o Pedido
                             </button>
                         </div>
+                    </div>
 
                 </div> <!-- Fim etapa 1 -->
                 <!-- Fim col md -->
@@ -217,16 +221,51 @@
                         <div class="col">
                             <div class="card">
 
-                                Informe os seus dados
+                                <div class="card-header">
+                                    Informe os seus dados
+                                </div> <!-- fim titulo -->
 
-                                Nome
+                                <div class="card-body">
 
-                                Mesa
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            Seu Nome
+                                        </label>
 
-                            </div>
+                                        <input type="text" class="form-control" v-model="inputNome">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                           Número da Mesa
+                                        </label>
+
+                                        <input type="text" class="form-control" v-model="inputMesa">
+                                    </div>
+
+                                </div> <!-- fim body -->
+
+                            </div> <!-- Fim Card -->
                         </div>
                     </div>
-                </div>
+
+                    <div class="row mt-2">
+
+                        <div  class="col d-flex justify-content-between">
+                            
+                            <button type="button" class="btn btn-warning" @click="etapa -= 1">
+                                Editar o Lanche
+                            </button>
+
+                            <button type="button" class="btn btn-success" @click="confirmarPedido()">
+                                Confirmar
+                            </button>
+                        </div>
+                    </div>
+
+                </div> <!-- Fim Etapa 2 -->
+
+
 
 
             </div> <!-- fim ROW -->
@@ -244,6 +283,9 @@
                 inputMolhos: [],
                 inputBurger: '',
                 etapa: 1,
+
+                inputNome: '',
+                inputMesa: '',
 
 
             },
@@ -271,7 +313,7 @@
 
                 ketchup() {
 
-                    if(this.inputMolhos.includes('ketchup')) {
+                    if (this.inputMolhos.includes('ketchup')) {
                         return 'imagens/ketchup.png'
                     }
 
@@ -280,7 +322,7 @@
 
                 mostarda() {
 
-                    if(this.inputMolhos.includes('mostarda')) {
+                    if (this.inputMolhos.includes('mostarda')) {
                         return 'imagens/mostarda.png'
                     }
 
@@ -289,15 +331,15 @@
 
                 maionese() {
 
-                    if(this.inputMolhos.includes('maionese')) {
+                    if (this.inputMolhos.includes('maionese')) {
                         return 'imagens/maionese.png'
                     }
 
                     return 'imagens/padrao/molho.png'
                 },
 
-                burger () {
-                    switch(this.inputBurger) {
+                burger() {
+                    switch (this.inputBurger) {
                         case 'bovino':
                             return 'imagens/bovino.png'
 
@@ -316,20 +358,28 @@
 
             },
 
-           methods:{
-               fazerPedido() {
-                   //se Pão e Carne forem selecionados
-                   if(this.inputTipoPao && this.inputBurger)  {
-                      this.etapa = 2
-                      // avança para etapa 2
-                   }
-                      else {
+            methods: {
+                fazerPedido() {
+                    //se Pão e Carne forem selecionados
+                    if (this.inputTipoPao && this.inputBurger) {
+                        this.etapa = 2
+                        // avança para etapa 2
+                    }
+                    else {
                         alert('Você precisa selecionar o minimo um pão e carne')
-                      }
+                    }
 
-             }
+                },
+                confirmarPedido() {
+                    if(this.inputNome && this.inputMesa) {
+                        this.etapa = 3
+                    }
+                    else {
+                        alert('Você precisa informar o seu Nome e a Mesa')
+                    }
+                },
 
-           },
+            },
 
 
         })
